@@ -50,6 +50,8 @@ socket.on('nbUsers', function(msg) {
 socket.on('message', function(data) {
 	addMessage(data['message'], data['pseudo'], new Date().toISOString(), false);
 	console.log(data);
+	var elem = document.getElementById('chatEntries');
+  	elem.scrollTop = elem.scrollHeight;
 });
 
 //Help functions
@@ -66,6 +68,8 @@ function sentMessage() {
 			addMessage(messageContainer.val(), "Me", new Date().toISOString(), true);
 			messageContainer.val('');
 			submitButton.button('loading');
+			var elem = document.getElementById('chatEntries');
+		        elem.scrollTop = elem.scrollHeight;
 		}
 	}
 }
